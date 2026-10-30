@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whimsy Store | Aesthetic Pink Clothing Marketplace</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff0f3;
+            color: #4a3b4c;
+            scroll-behavior: smooth;
+        }
+        .font-serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .pink-gradient {
+            background: linear-gradient(135deg, #ffb6c1 0%, #ff9bb3 50%, #ff7597 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 12px 35px -5px rgba(255, 182, 193, 0.4);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff0f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffb6c1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#fff0f3] min-h-screen flex flex-col selection:bg-pink-200 selection:text-pink-900">
+
+    <!-- HEADER & NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-pink-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home')">
+                <div class="w-11 h-11 rounded-2xl pink-gradient flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-serif-heading font-bold text-pink-700 tracking-wide">Whimsy Store</span>
+                    <span class="block text-xs font-semibold text-pink-400 tracking-widest uppercase">Bandung Fashion</span>
+                </div>
+            </div>
+
+            <!-- Navigasi Menu -->
+            <nav class="hidden md:flex items-center space-x-2">
+                <button onclick="showSection('home')" class="nav-btn px-5 py-2.5 rounded-full text-sm font-semibold text-pink-900 bg-pink-100 transition duration-300 shadow-sm" data-target="home">Home</button>
+                <button onclick="showSection('produk')" class="nav-btn px-5 py-2.5 rounded-full text-sm font-medium text-gray-600 hover:text-pink-700 hover:bg-pink-50 transition duration-300" data-target="produk">Produk</button>
+                <button onclick="showSection('info')" class="nav-btn px-5 py-2.5 rounded-full text-sm font-medium text-gray-600 hover:text-pink-700 hover:bg-pink-50 transition duration-300" data-target="info">Info</button>
+                <button onclick="showSection('kontak')" class="nav-btn px-5 py-2.5 rounded-full text-sm font-medium text-gray-600 hover:text-pink-700 hover:bg-pink-50 transition duration-300" data-target="kontak">Kontak</button>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleCartModal()" class="relative p-3 rounded-2xl bg-pink-50 text-pink-600 hover:bg-pink-100 transition duration-300 shadow-sm">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-pink-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow">0</span>
+                </button>
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-pink-700 hover:bg-pink-100">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-pink-100 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="showSection('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-semibold text-pink-700 bg-pink-50">Home</button>
+            <button onclick="showSection('produk'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-pink-50">Produk</button>
+            <button onclick="showSection('info'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-pink-50">Info</button>
+            <button onclick="showSection('kontak'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-pink-50">Kontak</button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- BANNER UTAMA (HANYA 1 FOTO: WHIMS H 1)[cite: 6, 8] -->
+        <section class="py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="relative rounded-3xl overflow-hidden card-shadow bg-white border border-pink-100">
+                <div class="relative h-[220px] sm:h-[300px] md:h-[380px] w-full overflow-hidden">
+                    <img src="img/whims h 1.jpeg" onerror="this.src='https://placehold.co/1200x400/ffb6c1/ffffff?text=WELCOME+Whimsy+Store'" alt="whims h 1" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                        <span class="bg-pink-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full w-max mb-2 shadow">Welcome</span>
+                        <h1 class="text-2xl sm:text-4xl font-serif-heading font-bold">Whimsy Store Collection</h1>
+                        <p class="text-xs sm:text-sm text-pink-100 max-w-xl">Pusat fashion pink estetik terdepan di Bandung.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HALAMAN HOME -->
+        <div id="page-home" class="page-content">
+            <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-pink-500 font-bold text-xs uppercase tracking-widest bg-pink-100 px-3.5 py-1.5 rounded-full">Koleksi Pilihan</span>
+                    <h2 class="text-3xl font-serif-heading font-bold text-pink-900 mt-2">Produk Unggulan</h2>
+                    <p class="text-gray-600 text-sm mt-1">Koleksi baju eksklusif menggunakan kode folder pilihan: Whims 1, Whims 2, Whims 3, dan Whims 4.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-product-grid"></div>
+            </section>
+        </div>
+
+        <!-- HALAMAN PRODUK LENGKAP -->
+        <div id="page-produk" class="page-content hidden">
+            <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-pink-500 font-bold text-xs uppercase tracking-widest bg-pink-100 px-3.5 py-1.5 rounded-full">Katalog Lengkap</span>
+                    <h2 class="text-3xl font-serif-heading font-bold text-pink-900 mt-2">Semua Produk Whimsy</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="all-product-grid"></div>
+            </section>
+        </div>
+
+        <!-- HALAMAN INFO TOKO -->
+        <div id="page-info" class="page-content hidden">
+            <section class="py-12 bg-white border-y border-pink-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <span class="text-pink-500 font-bold text-xs uppercase tracking-widest bg-pink-100 px-3.5 py-1.5 rounded-full">Profil Toko</span>
+                            <h2 class="text-3xl font-serif-heading font-bold text-pink-900 mt-3 mb-4">Whimsy Store Bandung</h2>
+                            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                                Whimsy Store adalah pusat fashion lokal Bandung dengan konsep aesthetic pink, chic, dan manis. Kami menghadirkan desain baju kekinian bermaterial nyaman dan berkualitas premium.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3 text-sm text-gray-700">
+                                    <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600"><i class="fa-solid fa-location-dot"></i></div>
+                                    <span>Jl. Fashion Pink No. 88, Bandung</span>
+                                </div>
+                                <div class="flex items-center space-x-3 text-sm text-gray-700">
+                                    <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600"><i class="fa-solid fa-clock"></i></div>
+                                    <span>Jam Operasional: 09:00 - 20:00 WIB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-3xl overflow-hidden shadow-lg border border-pink-100">
+                            <img src="img/whims h 1.jpg" onerror="this.src='https://placehold.co/600x400/ffb6c1/ffffff?text=Whimsy+Store'" alt="Info Toko" class="w-full h-72 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- HALAMAN KONTAK / NGEDM -->
+        <div id="page-kontak" class="page-content hidden">
+            <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <span class="text-pink-500 font-bold text-xs uppercase tracking-widest bg-pink-100 px-3.5 py-1.5 rounded-full">Hubungi Kami</span>
+                    <h2 class="text-3xl font-serif-heading font-bold text-pink-900 mt-2">Kontak / Pesan Pribadi (DM)</h2>
+                    <p class="text-gray-600 text-sm mt-1">Nanya-nanya produk atau konsultasi ukuran? Langsung DM kami di media sosial atau WhatsApp!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- WhatsApp -->
+                    <div class="bg-white p-6 rounded-3xl border border-pink-100 card-shadow text-center flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 rounded-2xl bg-green-100 text-green-500 flex items-center justify-center text-3xl mb-4">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800">WhatsApp Official</h3>
+                        <p class="text-xs text-gray-500 mt-1 mb-4">Tanya stok & konsultasi pemesanan secara pribadi.</p>
+                        <a href="https://wa.me/6285220637775?text=Halo%20Whimsy%20Store,%20mau%20tanya%20tentang%20produk" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2 text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Chat WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Instagram DM -->
+                    <div class="bg-white p-6 rounded-3xl border border-pink-100 card-shadow text-center flex flex-col items-center justify-center">
+                        <div class="w-16 h-16 rounded-2xl bg-pink-100 text-pink-500 flex items-center justify-center text-3xl mb-4">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800">Instagram DM</h3>
+                        <p class="text-xs text-gray-500 mt-1 mb-4">Kirim pesan DM pribadi untuk info katalog harian.</p>
+                        <a href="https://instagram.com" target="_blank" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2 text-sm">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                            <span>DM Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-pink-100 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-500">&copy; 2026 Whimsy Store Bandung. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL KERANJANG BELANJA -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-pink-100">
+                    <h3 class="font-serif-heading font-bold text-xl text-pink-900">Keranjang Belanja</h3>
+                    <button onclick="toggleCartModal()" class="text-gray-400 hover:text-pink-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="py-4 space-y-4"></div>
+            </div>
+
+            <div class="border-t border-pink-100 pt-4">
+                <div class="flex justify-between font-bold text-gray-800 mb-4">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-pink-600">Rp 0</span>
+                </div>
+                <button onclick="toggleCartModal(); openOrderModal();" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 rounded-2xl shadow-md transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Lanjut Pemesanan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FORMULIR PEMESANAN (NAMA, ALAMAT, PILIH PRODUK, JUMLAH) -->
+    <div id="order-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeOrderModal()" class="absolute top-5 right-5 text-gray-400 hover:text-pink-600 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-pink-500 font-bold text-xs uppercase tracking-widest bg-pink-100 px-3 py-1 rounded-full">Form Pemesanan</span>
+                <h3 class="text-2xl font-serif-heading font-bold text-pink-900 mt-2">Isi Data Pemesanan</h3>
+                <p class="text-xs text-gray-500 mt-1">Lengkapi nama dan alamat pengiriman kamu</p>
+            </div>
+
+            <form id="order-form" onsubmit="submitOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Lengkap</label>
+                    <input type="text" id="cust-name" required placeholder="Masukkan nama kamu..." class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Alamat Lengkap</label>
+                    <textarea id="cust-address" required rows="3" placeholder="Masukkan alamat pengiriman..." class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Pilih Produk</label>
+                        <select id="cust-product" onchange="updatePriceFromSelect()" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+                            <option value="Whims 1 - Pastel Oversized Tee" data-price="125000">Whims 1 (Rp 125.000)</option>
+                            <option value="Whims 2 - Aesthetic Hoodie" data-price="245000">Whims 2 (Rp 245.000)</option>
+                            <option value="Whims 3 - Cute Knit Blouse" data-price="185000">Whims 3 (Rp 185.000)</option>
+                            <option value="Whims 4 - Sweetheart Jacket" data-price="295000">Whims 4 (Rp 295.000)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Jumlah</label>
+                        <input type="number" id="cust-qty" min="1" value="1" onchange="calculateOrderTotal()" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+                    </div>
+                </div>
+
+                <div class="bg-pink-50 p-4 rounded-2xl flex justify-between items-center text-sm font-bold text-pink-900 mt-2">
+                    <span>Total Estimasi:</span>
+                    <span id="order-total-price" class="text-pink-600 text-base">Rp 125.000</span>
+                </div>
+
+                <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 rounded-2xl shadow-md transition flex items-center justify-center space-x-2 text-sm mt-4">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Kirim Pesanan via WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT SYSTEM -->
+    <script>
+        // Data Produk (Tanpa Kategori Teks)
+        const products = [
+            { id: 1, name: 'Whims 1 - Pastel Oversized Tee', price: 125000, img: 'img/whims 1.jpg', tag: 'Bestseller', desc: 'Kaos katun premium bertekstur lembut dengan potongan santai khas distro Bandung.' },
+            { id: 2, name: 'Whims 2 - Aesthetic Hoodie', price: 245000, img: 'img/whims 2.jpg', tag: 'Trending', desc: 'Hoodie hangat berbalut warna pink pastel menawan, sangat nyaman dikenakan.' },
+            { id: 3, name: 'Whims 3 - Cute Knit Blouse', price: 185000, img: 'img/whims 3.jpg', tag: 'New', desc: 'Blus rajut ringan dengan detail estetik modern yang memberikan kesan feminin.' },
+            { id: 4, name: 'Whims 4 - Sweetheart Jacket', price: 295000, img: 'img/whims 4.jpg', tag: 'Limited', desc: 'Jaket streetwear kombinasi warna pink pastel menawan dengan jahitan rapi.' }
+        ];
+
+        let cart = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            calculateOrderTotal();
+        });
+
+        // Render Kartu Produk
+        function renderProducts() {
+            const homeGrid = document.getElementById('home-product-grid');
+            const allGrid = document.getElementById('all-product-grid');
+
+            const createCardHTML = (p) => `
+                <div class="bg-white rounded-3xl p-5 border border-pink-100 card-shadow flex flex-col justify-between group hover:-translate-y-1 transition duration-300">
+                    <div>
+                        <div class="relative rounded-2xl overflow-hidden aspect-square bg-pink-50 mb-4 shadow-inner">
+                            <img src="${p.img}" onerror="this.src='https://placehold.co/400x400/ffd1dc/4a3b4c?text=${p.name}'" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-pink-500 text-white text-xs px-3 py-1 rounded-full font-semibold shadow">${p.tag}</span>
+                        </div>
+                        <h3 class="font-serif-heading font-bold text-lg text-pink-900 mt-1">${p.name}</h3>
+                        <p class="text-gray-500 text-xs mt-1">${p.desc}</p>
+                    </div>
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400 block">Harga</span>
+                            <span class="text-lg font-bold text-pink-600">Rp ${p.price.toLocaleString('id-ID')}</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="addToCart('${p.name}', ${p.price}, '${p.img}')" title="Tambah ke Keranjang" class="bg-pink-100 hover:bg-pink-200 text-pink-700 p-2.5 rounded-2xl transition">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                            <button onclick="openOrderModalDirect('${p.name}', ${p.price})" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2.5 rounded-2xl shadow transition text-xs font-semibold">
+                                Beli
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            homeGrid.innerHTML = products.map(createCardHTML).join('');
+            allGrid.innerHTML = products.map(createCardHTML).join('');
+        }
+
+        // Navigasi Section
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`page-${sectionId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-target') === sectionId) {
+                    btn.className = "nav-btn px-5 py-2.5 rounded-full text-sm font-semibold text-pink-900 bg-pink-100 transition duration-300 shadow-sm";
+                } else {
+                    btn.className = "nav-btn px-5 py-2.5 rounded-full text-sm font-medium text-gray-600 hover:text-pink-700 hover:bg-pink-50 transition duration-300";
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Keranjang Belanja
+        function toggleCartModal() {
+            document.getElementById('cart-modal').classList.toggle('hidden');
+        }
+
+        function addToCart(name, price, img) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name, price, img, qty: 1 });
+            }
+            updateCart();
+            toggleCartModal();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartBadge = document.getElementById('cart-badge');
+            const cartTotal = document.getElementById('cart-total');
+
+            let totalQty = 0;
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-center text-sm text-gray-400 py-6">Keranjang kamu kosong.</p>';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => {
+                    totalQty += item.qty;
+                    totalPrice += item.price * item.qty;
+                    return `
+                        <div class="flex items-center justify-between border-b border-pink-50 pb-3">
+                            <div class="flex items-center space-x-3">
+                                <img src="${item.img}" class="w-12 h-12 rounded-xl object-cover" onerror="this.src='https://placehold.co/100'">
+                                <div>
+                                    <h4 class="font-semibold text-xs text-gray-800">${item.name}</h4>
+                                    <span class="text-xs text-pink-600 font-bold">Rp ${item.price.toLocaleString('id-ID')} x ${item.qty}</span>
+                                </div>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 text-sm"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            cartBadge.innerText = totalQty;
+            cartTotal.innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Modal Form Pemesanan
+        function openOrderModal() {
+            document.getElementById('order-modal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+        }
+
+        function openOrderModalDirect(productName, price) {
+            const productSelect = document.getElementById('cust-product');
+            productSelect.value = productName;
+            document.getElementById('cust-qty').value = 1;
+            calculateOrderTotal();
+            openOrderModal();
+        }
+
+        function calculateOrderTotal() {
+            const select = document.getElementById('cust-product');
+            const price = select.options[select.selectedIndex].getAttribute('data-price');
+            const qty = document.getElementById('cust-qty').value || 1;
+            const total = price * qty;
+
+            document.getElementById('order-total-price').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        function updatePriceFromSelect() {
+            calculateOrderTotal();
+        }
+
+        // Kirim Form Ke WhatsApp
+        function submitOrder(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('cust-name').value;
+            const address = document.getElementById('cust-address').value;
+            const product = document.getElementById('cust-product').value;
+            const qty = document.getElementById('cust-qty').value;
+            const total = document.getElementById('order-total-price').innerText;
+
+            let text = `*FORM PEMESANAN WHIMSY STORE*\n\n`;
+            text += `*Nama:* ${name}\n`;
+            text += `*Alamat:* ${address}\n`;
+            text += `*Produk:* ${product}\n`;
+            text += `*Jumlah:* ${qty}\n`;
+            text += `*Total Pembayaran:* ${total}\n\n`;
+            text += `Mohon konfirmasi dan infokan nomor rekening untuk pembayarannya ya, terima kasih!`;
+
+            const waUrl = `https://wa.me/6285220637775?text=${encodeURIComponent(text)}`;
+            window.open(waUrl, '_blank');
+            closeOrderModal();
+        }
+    </script>
+</body>
+</html>
